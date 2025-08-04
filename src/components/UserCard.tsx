@@ -46,7 +46,7 @@ export default function UserCard({ user, showSaveButton = true, showDeleteButton
       <div className={`relative w-full h-full duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
         {/* Фронтальна сторона картки */}
         <div className="absolute w-full h-full [backface-visibility:hidden] bg-white rounded-lg shadow-md overflow-hidden flex flex-col p-6 items-center text-center">
-          <Image
+          <img
             src={user.picture.large}
             alt={`${user.name.first} ${user.name.last}`}
             width={128}
