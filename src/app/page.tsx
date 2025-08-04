@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import UserCard from '@/components/UserCard';
-import { User,ApiResponse } from '@/type'; 
-import {RevealWrapper} from 'next-reveal'
+import { User, ApiResponse } from '@/type'; 
+import { RevealWrapper } from 'next-reveal';
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
@@ -13,7 +13,7 @@ export default function Home() {
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://randomuser.me/api/?results=9');
+      const response = await fetch('/api/users?results=9'); 
       const data: ApiResponse = await response.json(); 
       setUsers((prevUsers) => [...prevUsers, ...data.results]);
     } catch (err) {
@@ -40,8 +40,8 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-6 text-center">Random Users</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {users.map((user, index) => (
-          <RevealWrapper key={user.login.uuid} delay={index *50}>
-          <UserCard key={index} user={user} />
+          <RevealWrapper key={user.login.uuid} delay={index * 50}>
+            <UserCard user={user} />
           </RevealWrapper>
         ))}
       </div>
